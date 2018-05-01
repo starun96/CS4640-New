@@ -15,7 +15,7 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="/NewPlace/NewWeb/css/style.css">
+    <link rel="stylesheet" href="/NewWeb/css/style.css">
 </head>
 <body>
 
@@ -69,13 +69,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/NewPlace/NewWeb/index.php">HOME <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/NewWeb/index.php">HOME <span
+                            class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/NewPlace/NewWeb/php/leaderboard.php">LEADERBOARD</a>
+                <a class="nav-link" href="/NewWeb/php/leaderboard.php">LEADERBOARD</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/NewPlace/NewWeb/php/debate.php">DEBATE ZONE</a>
+                <a class="nav-link" href="/NewWeb/php/debate.php">DEBATE ZONE</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"

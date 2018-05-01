@@ -1,3 +1,10 @@
+/**
+* Created by IntelliJ IDEA.
+* User: tarun
+* Date: 4/30/18
+* Time: 10:02 PM
+*/
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +23,10 @@
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
           crossorigin="anonymous">
     <link rel="stylesheet" href="/NewWeb/css/style.css">
+
 </head>
-<body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp2" ng-init="users=[];">
 
 
 <!--    nav bar-->
@@ -72,31 +81,38 @@
 </nav>
 
 
+<div ng-controller="myCtrl">
+
+    <button ng-click="getUsersSorted()">Display the Sorted Users</button>
+    <ul>
+        <li ng-repeat="user in users | orderBy">{{user}}</li>
+    </ul>
+</div>
+
+<script>
+    angular.module('myApp2', [])
+        .controller('myCtrl', ['$scope', function ($scope) {
+
+            $scope.getUsersSorted = function () {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var result = xhr.responseText;
+                        var list_from_php = result.split(' ');
+                        $scope.users = list_from_php;
+                    }
+
+                };
+                xhr.open("GET", "names.php");
+                xhr.send();
+            };
+        }]);
+</script>
+
+
 <!--    heading-->
 <!--    main content-->
-<div class="container" id="create-debate">
-    <form class="form-inline my-2 my-lg-0">
-        <input id="create-topic-input" class="form-control mr-sm-2" type="search"
-               placeholder="New Topic..." aria-label="Search">
-        <div class="col-lg-4">
-            <a href="#" id="create-debate-button" class="btn btn-success btn-lg btn-block btn-huge">CREATE
-                NEW TOPIC</a>
-        </div>
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">CREATE NEW TOPIC</button> -->
 
-    </form>
-
-</div>
-
-
-<div class="container" id="enter-random-debate">
-    <form class="form-inline my-2 my-lg-0">
-        <div class="col-lg-4">
-            <a href="#" id="random-debate-button" class="btn btn-success btn-lg btn-block btn-huge">ENTER
-                RANDOM DEBATE</a>
-        </div>
-    </form>
-</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -109,8 +125,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="/NewWeb/js/app.js">
+<script type="text/javascript" src="/NewWeb/js/app.js"></script>
 
-</script>
+
 </body>
 </html>
